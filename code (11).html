@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A.R.Sparkmedia - Freelance Modelling Agency</title>
+<style>
+  /* Import Inter font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
+
+  /* CSS Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, h1, h2, h3, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #111;
+  }
+
+  body {
+    background: #f9f9fa;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+  }
+
+  /* Container max widths */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* HEADER */
+  header {
+    position: sticky;
+    top: 0;
+    background: #222222;
+    color: #fff;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .logo-container img {
+    height: 50px;
+    width: auto;
+    display: block;
+  }
+
+  /* Navigation Desktop */
+  nav.desktop-nav {
+    display: none;
+    gap: 28px;
+  }
+  nav.desktop-nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  nav.desktop-nav a:hover, nav.desktop-nav a:focus {
+    background-color: #fcb900;
+    color: #222;
+    outline: none;
+  }
+
+  /* Hamburger and Mobile Navigation */
+  button.mobile-menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  nav.mobile-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #222;
+    display: none;
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 20px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    z-index: 98;
+  }
+  nav.mobile-nav.show {
+    display: flex;
+  }
+  nav.mobile-nav a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  nav.mobile-nav a:hover,
+  nav.mobile-nav a:focus {
+    background-color: #fcb900;
+    color: #222;
+    outline: none;
+  }
+
+  /* MAIN CONTENT */
+  main {
+    flex-grow: 1;
+    padding: 64px 0;
+    background: #fff;
+  }
+
+  .hero {
+    max-width: 900px;
+    margin: 0 auto 64px;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #222;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    color: #555;
+    margin-bottom: 32px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, #fcb900 0%, #f5a800 100%);
+    color: #222;
+    font-weight: 700;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgb(252 185 0 / 0.5);
+    transition: transform 0.3s ease;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  /* Features Section */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .feature-card {
+    background: #f3f3f3;
+    border-radius: 20px;
+    padding: 32px 24px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.05);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .feature-card:hover {
+    box-shadow: 0 20px 40px rgb(252 185 0 / 0.3);
+  }
+  .feature-icon {
+    font-size: 3rem;
+    color: #fcb900;
+    margin-bottom: 20px;
+  }
+  .feature-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: #222;
+  }
+  .feature-desc {
+    color: #555;
+  }
+
+  /* Footer */
+  footer {
+    background: #222;
+    color: #ccc;
+    padding: 48px 16px 32px;
+    font-size: 0.9rem;
+  }
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex: 1 1 200px;
+  }
+  .footer-section h4 {
+    color: #fcb900;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .footer-section a {
+    display: block;
+    color: #ccc;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+  }
+  .footer-section a:hover,
+  .footer-section a:focus {
+    color: #fcb900;
+    outline: none;
+  }
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    color: #555;
+  }
+
+  /* Responsive Layout */
+
+  /* Mobile first styles already applied */
+
+  @media (min-width: 768px) {
+    nav.desktop-nav {
+      display: flex;
+    }
+    button.mobile-menu-button {
+      display: none;
+    }
+    nav.mobile-nav {
+      display: none !important;
+    }
+    .hero h1 {
+      font-size: 4rem;
+    }
+    main {
+      padding: 96px 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* Main three-column layout for mid-large desktop */
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      gap: 48px;
+      padding: 96px 0;
+    }
+
+    .hero {
+      grid-column: 2;
+      margin-bottom: 64px;
+      text-align: center;
+    }
+
+    .features-grid {
+      grid-column: 2;
+      margin: 0 auto;
+    }
+
+    /* Sidebar placeholders (e.g., empty or future use) */
+    /* For now no sidebar content - can add testimonials or CTA */
+  }
+
+  @media (min-width: 1440px) {
+    .container {
+      max-width: 1400px;
+    }
+  }
+
+</style>
+<!-- Material Icons CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+<header>
+  <div class="header-inner container" role="banner">
+    <a href="#" class="logo-container" aria-label="A.R.Sparkmedia home">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8d0e5163-4d2f-453f-b828-212cc4f184ca.png" alt="A.R.Sparkmedia modelling agency logo in silver and gold with spark center on dark background"/>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#about" tabindex="0">About Us</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#join" tabindex="0">Join Us</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </nav>
+    <button class="mobile-menu-button" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-navigation">
+      <span class="material-icons">menu</span>
+    </button>
+  </div>
+  <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile primary navigation" role="navigation">
+    <a href="#about" tabindex="0">About Us</a>
+    <a href="#services" tabindex="0">Services</a>
+    <a href="#join" tabindex="0">Join Us</a>
+    <a href="#contact" tabindex="0">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Welcome section">
+    <h1>Welcome to A.R.Sparkmedia</h1>
+    <p>Your premier modeling agency seeking talented freelance models to shine on the global stage. Join us today and ignite your career!</p>
+    <button class="btn-primary" onclick="document.getElementById('join-form').scrollIntoView({behavior:'smooth'})">Become a Model</button>
+  </section>
+
+  <section class="features-grid" aria-label="Agency benefits and services">
+    <article class="feature-card" tabindex="0">
+      <span class="material-icons feature-icon" aria-hidden="true">stars</span>
+      <h3 class="feature-title">Top Industry Exposure</h3>
+      <p class="feature-desc">Showcase your talents with premium clients worldwide and gain unmatched visibility.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <span class="material-icons feature-icon" aria-hidden="true">support_agent</span>
+      <h3 class="feature-title">Expert Model Support</h3>
+      <p class="feature-desc">Our team supports your growth with training, coaching, and professional guidance.</p>
+    </article>
+    <article class="feature-card" tabindex="0">
+      <span class="material-icons feature-icon" aria-hidden="true">schedule</span>
+      <h3 class="feature-title">Flexible Freelance Scheduling</h3>
+      <p class="feature-desc">Work on your terms with opportunities tailored to your availability and style.</p>
+    </article>
+  </section>
+
+  <section id="join" aria-label="Model application form" style="max-width: 600px; margin: 60px auto 0; padding: 0 16px;">
+    <h2 style="text-align:center; font-weight: 900; font-size: 2.2rem; margin-bottom: 24px; color: #222;">Join A.R.Sparkmedia</h2>
+    <form id="join-form" aria-describedby="join-desc" novalidate>
+      <p id="join-desc" style="margin-bottom:16px; color:#555;">Fill out the form below to apply as a freelance model with us. We’ll get back to you shortly.</p>
+      <label for="fullName" style="display:block; font-weight: 600; margin-bottom:8px; color:#222;">Full Name *</label>
+      <input type="text" id="fullName" name="fullName" required aria-required="true" style="width:100%; padding:12px 16px; margin-bottom:24px; border-radius:8px; border:1px solid #ccc; font-size:1rem;" />
+
+      <label for="email" style="display:block; font-weight: 600; margin-bottom:8px; color:#222;">Email Address *</label>
+      <input type="email" id="email" name="email" required aria-required="true" style="width:100%; padding:12px 16px; margin-bottom:24px; border-radius:8px; border:1px solid #ccc; font-size:1rem;" />
+
+      <label for="portfolio" style="display:block; font-weight: 600; margin-bottom:8px; color:#222;">Portfolio or Social Link *</label>
+      <input type="url" id="portfolio" name="portfolio" placeholder="https://yourportfolio.com or your Instagram" required aria-required="true" style="width:100%; padding:12px 16px; margin-bottom:24px; border-radius:8px; border:1px solid #ccc; font-size:1rem;" />
+
+      <label for="message" style="display:block; font-weight: 600; margin-bottom:8px; color:#222;">Additional Information</label>
+      <textarea id="message" name="message" rows="4" style="width:100%; padding:12px 16px; border-radius:8px; border:1px solid #ccc; font-size:1rem; margin-bottom:32px;"></textarea>
+
+      <button type="submit" class="btn-primary" style="width: 100%;">Submit Application</button>
+      <p id="form-status" role="alert" style="margin-top: 16px; font-weight: 600; color: green; display:none;"></p>
+    </form>
+  </section>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-container container">
+    <section class="footer-section" aria-label="About the agency">
+      <h4>About A.R.Sparkmedia</h4>
+      <p>We connect freelance models with top-tier brands and creatives worldwide. Your talent, our platform.</p>
+    </section>
+    <section class="footer-section" aria-label="Quick links">
+      <h4>Quick Links</h4>
+      <a href="#about" tabindex="0">About Us</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#join" tabindex="0">Join Us</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </section>
+    <section class="footer-section" aria-label="Contact information">
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:contact@arsparkmedia.com" tabindex="0">contact@arsparkmedia.com</a></p>
+      <p>Phone: <a href="tel:+1234567890" tabindex="0">+1 (234) 567-890</a></p>
+    </section>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2024 A.R.Sparkmedia. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.querySelector("button.mobile-menu-button");
+  const mobileNav = document.getElementById("mobile-navigation");
+
+  menuButton.addEventListener("click", () => {
+    const expanded = menuButton.getAttribute("aria-expanded") === "true" || false;
+    menuButton.setAttribute("aria-expanded", !expanded);
+    mobileNav.classList.toggle("show");
+  });
+
+  // Simple form validation and submission simulation
+  const form = document.getElementById("join-form");
+  const statusMessage = document.getElementById("form-status");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const fullName = form.fullName.value.trim();
+    const email = form.email.value.trim();
+    const portfolio = form.portfolio.value.trim();
+
+    if (!fullName || !email || !portfolio) {
+      statusMessage.style.color = "red";
+      statusMessage.textContent = "Please fill all required fields correctly.";
+      statusMessage.style.display = "block";
+      return;
+    }
+    // Basic email format check (simple)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      statusMessage.style.color = "red";
+      statusMessage.textContent = "Please enter a valid email address.";
+      statusMessage.style.display = "block";
+      return;
+    }
+
+    statusMessage.style.color = "green";
+    statusMessage.textContent = "Thank you for your application! We will contact you soon.";
+    statusMessage.style.display = "block";
+    form.reset();
+  });
+</script>
+</body>
+</html>
+
